@@ -10,6 +10,7 @@ const PORT = process.env.PORT || 5000;
 const userRoutes = require("./routes/user");
 const adminRoutes = require("./routes/admin");
 const transactionRoutes = require("./routes/transaction");
+const categoryRoutes = require("./routes/category");
 
 //middle ware
 app.use(express.json());
@@ -35,6 +36,7 @@ app.use(requireAuth);
 
 app.use("/transaction", transactionRoutes);
 
+app.use("/category", categoryRoutes);
 // connect to db
 mongoose
   .connect(process.env.MONGO_URI)

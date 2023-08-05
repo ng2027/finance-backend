@@ -62,7 +62,7 @@ const getTransactions = async (req, res) => {
     res.json({ transactions, countTotal: unfilteredTransactions.length });
   } catch (error) {
     console.log(error);
-    res.status(400).json({ error });
+    res.status(400).json({ error: error.message });
   }
 };
 

@@ -50,7 +50,7 @@ transactionSchema.statics.exists = async function (id, req, res) {
     if (error.name === "CastError") {
       res.status(404).json({ error: "Transaction does not exist." });
     } else {
-      res.status(400).json({ error });
+      res.status(400).json({ error: error.message });
     }
     return false;
   }

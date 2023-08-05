@@ -29,7 +29,7 @@ async function updateTransactionJob(
     };
   } catch (error) {
     console.log(error);
-    return { response: { error }, status: 400 };
+    return { response: { error: error.message }, status: 400 };
   }
 }
 
