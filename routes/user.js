@@ -7,10 +7,6 @@ const {
   verifyUser,
 } = require("../controllers/userController");
 
-router.get("/", (req, res) => {
-  res.json({ msg: "GET USER FROM JWT" });
-});
-
 // login route
 router.post("/login", loginUser);
 

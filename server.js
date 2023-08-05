@@ -8,6 +8,8 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 const userRoutes = require("./routes/user");
+const adminRoutes = require("./routes/admin");
+const transactionRoutes = require("./routes/transaction");
 
 //middle ware
 app.use(express.json());
@@ -27,7 +29,11 @@ app.get("/", (req, res) => {
 
 app.use("/user", userRoutes);
 
+app.use("/admin", adminRoutes);
+
 app.use(requireAuth);
+
+app.use("/transaction", transactionRoutes);
 
 // connect to db
 mongoose
