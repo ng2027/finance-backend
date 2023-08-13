@@ -22,7 +22,6 @@ const transactionSchema = new Schema({
   date: {
     type: Date,
     default: Date.now,
-    required: true,
   },
   transaction_is_spending: {
     type: Boolean,

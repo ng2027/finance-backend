@@ -1,22 +1,32 @@
 const Transaction = require("../../models/transactionModel");
 
-async function createTransactionJob({
-  name,
-  amount,
-  description,
-  transaction_is_spending,
-  category,
-  user_id,
-}) {
+async function createTransactionJob(
+  { name, amount, description, transaction_is_spending, category, user_id },
+  date = null
+) {
   try {
-    const newTransaction = new Transaction({
-      name,
-      amount,
-      description,
-      transaction_is_spending,
-      category,
-      user_id,
-    });
+    var newTransaction;
+    if (!date) {
+      newTransaction = new Transaction({
+        name,
+        amount,
+        description,
+        transaction_is_spending,
+        category,
+        user_id,
+      });
+    } else {
+      newTransaction = new Transaction({
+        name,
+        amount,
+        description,
+        transaction_is_spending,
+        category,
+        user_id,
+        date,
+      });
+    }
+
     await newTransaction.save();
     return {
       response: {

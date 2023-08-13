@@ -11,6 +11,7 @@ const userRoutes = require("./routes/user");
 const adminRoutes = require("./routes/admin");
 const transactionRoutes = require("./routes/transaction");
 const categoryRoutes = require("./routes/category");
+const subscriptionRoutes = require("./routes/subscription");
 
 //middle ware
 app.use(express.json());
@@ -37,6 +38,9 @@ app.use(requireAuth);
 app.use("/transaction", transactionRoutes);
 
 app.use("/category", categoryRoutes);
+
+app.use("/subscription", subscriptionRoutes);
+
 // connect to db
 mongoose
   .connect(process.env.MONGO_URI)
