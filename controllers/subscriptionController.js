@@ -76,7 +76,7 @@ const getSubscriptions = async (req, res) => {
 
 const closeSubscription = async (req, res) => {
   const { add } = req.body;
-  if (!add) {
+  if (add == undefined || add == null) {
     res.status(400).json({ error: "Missing field" });
     return;
   }
@@ -91,7 +91,7 @@ const getUpcomingSubscription = async (req, res) => {
   const currentDate = new Date();
   const currentMonth = currentDate.getMonth() + 1;
   const currentYear = currentDate.getFullYear();
-  const { limit = 10, offset = 0 } = req.query;
+  const { limit = 15, offset = 0 } = req.query;
   const unfilteredSubscriptions = await Subscription.find({
     user_id: req.user._id,
 

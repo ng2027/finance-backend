@@ -14,17 +14,28 @@ async function closeSubscriptionJob(subscriptionID, addTransaction) {
       const currentDate = new Date();
       const yearDiff = currentDate.getFullYear() - oldResult.last_year;
       const monthDiff = currentDate.getMonth() - oldResult.last_month;
-      const totalMonthsDiff = yearDiff * 12 + monthDiff;
+      const dayDiff = currentDate.getDate() - oldResult.date;
+      var totalMonthsDiff = yearDiff * 12 + monthDiff;
+      if (dayDiff > 0) {
+        totalMonthsDiff++;
+      }
+      console.log(totalMonthsDiff);
       let tempDate = new Date(
         oldResult.last_year,
         oldResult.last_month,
         oldResult.date
       );
-
-      for (let i = 0; i <= totalMonthsDiff; i++) {
+      let currentTime = new Date();
+      tempDate.setHours(
+        currentTime.getHours(),
+        currentTime.getMinutes(),
+        currentTime.getSeconds(),
+        currentTime.getMilliseconds()
+      );
+      for (let i = 0; i < totalMonthsDiff; i++) {
         const transaction = await createTransactionJob(
           {
-            name: oldResult.name + " subscription payment",
+            name: oldResult.name + " Subscription Payment",
             amount: oldResult.amount,
             description: `Subscription Transaction: ${oldResult.name}, Description: ${oldResult.description} `,
             transaction_is_spending: oldResult.transaction_is_spending,
