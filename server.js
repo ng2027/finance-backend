@@ -12,6 +12,7 @@ const adminRoutes = require("./routes/admin");
 const transactionRoutes = require("./routes/transaction");
 const categoryRoutes = require("./routes/category");
 const subscriptionRoutes = require("./routes/subscription");
+const tabRoutes = require("./routes/tab");
 
 //middle ware
 app.use(express.json());
@@ -41,6 +42,11 @@ app.use("/category", categoryRoutes);
 
 app.use("/subscription", subscriptionRoutes);
 
+app.use("/tab", tabRoutes);
+
+app.use((req, res, next) => {
+  res.status(404).send({ error: "404 - Not Found" });
+});
 // connect to db
 mongoose
   .connect(process.env.MONGO_URI)
