@@ -13,6 +13,7 @@ const transactionRoutes = require("./routes/transaction");
 const categoryRoutes = require("./routes/category");
 const subscriptionRoutes = require("./routes/subscription");
 const tabRoutes = require("./routes/tab");
+const reportRoutes = require("./routes/report");
 
 //middle ware
 app.use(express.json());
@@ -35,6 +36,8 @@ app.use("/user", userRoutes);
 app.use("/admin", adminRoutes);
 
 app.use(requireAuth);
+
+app.use("/report", reportRoutes);
 
 app.use("/transaction", transactionRoutes);
 
