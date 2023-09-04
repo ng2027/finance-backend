@@ -24,7 +24,7 @@ async function createTabJob({
     return {
       response: {
         msg: `Successfully created tab with ${person}`,
-        transaction: newTab,
+        tab: newTab,
       },
       status: 200,
     };

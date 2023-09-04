@@ -19,7 +19,7 @@ async function closeSubscriptionJob(subscriptionID, addTransaction) {
       if (dayDiff > 0) {
         totalMonthsDiff++;
       }
-      console.log(totalMonthsDiff);
+
       let tempDate = new Date(
         oldResult.last_year,
         oldResult.last_month,

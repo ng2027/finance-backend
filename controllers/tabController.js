@@ -41,7 +41,7 @@ const updateTab = async (req, res) => {
 
 const deleteTab = async (req, res) => {
   const { tabID } = req.params;
-  const { add = false } = req.body;
+  const { add = false } = req.query;
   var tab = await Tab.exists(tabID, req, res);
   if (!tab) return;
   const { response, status } = await deleteTabJob(tabID, add);

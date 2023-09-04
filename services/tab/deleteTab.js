@@ -7,7 +7,7 @@ async function deleteTabJob(tabID, addTransaction) {
     await Tab.deleteOne({ _id: tabID });
 
     var transaction;
-    if (addTransaction) {
+    if (addTransaction == "true") {
       const currentDate = new Date();
       transaction = await createTransactionJob(
         {

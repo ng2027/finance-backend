@@ -10,7 +10,7 @@ const createToken = (_id, email) => {
 const loginUser = async (req, res) => {
   const { email, password } = req.body;
   try {
-    const user = await User.login(email, password);
+    const user = await User.login(email.toLowerCase(), password);
     const token = createToken(user._id, email);
 
     res.status(200).json({
@@ -35,7 +35,12 @@ const signUpUser = async (req, res) => {
   const { firstname, lastname, email, password } = req.body;
 
   try {
-    const user = await User.signup(firstname, lastname, email, password);
+    const user = await User.signup(
+      firstname,
+      lastname,
+      email.toLowerCase(),
+      password
+    );
     const token = createToken(user._id, email);
     res.status(200).json({
       firstName: user.firstName,
