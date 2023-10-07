@@ -61,11 +61,11 @@ const getReport = async (req, res) => {
     };
 
     if (isSpent == "true") {
-      res.status(200).json({ ...body, spent: sumAmount });
+      res.status(200).json({ ...body, spent: sumAmount.toFixed(3) });
     } else {
       res.status(200).json({
         ...body,
-        recieved: sumAmount,
+        recieved: sumAmount.toFixed(3),
       });
     }
   } catch (error) {

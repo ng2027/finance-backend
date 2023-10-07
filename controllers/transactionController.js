@@ -64,8 +64,10 @@ const getTransactions = async (req, res) => {
     )
       .sort({ date: -1 })
       .exec();
-    const transactions = unfilteredTransactions.slice(offset, offset + limit);
-
+    const transactions = unfilteredTransactions.slice(
+      offset,
+      Number(offset) + Number(limit)
+    );
     res.json({ transactions, countTotal: unfilteredTransactions.length });
   } catch (error) {
     console.log(error);
